@@ -1,4 +1,3 @@
-
 <?php
 //API BY KRITTKORN
 define("SSH_IP", "45.130.141.159");
@@ -26,7 +25,7 @@ else
     {
     	if($cmd == "start" || $cmd == "start")
     	{
-	        if(!($stream = ssh2_exec($con, "screen -dmS $name $commandstart))) die("Command couldn't be executed, something went wrong...\n");
+	        if(!($stream = ssh2_exec($con, "screen -dmS ".$name." ".$commandstart))) die("Command couldn't be executed, something went wrong...\n");
 	        else
 	        {
 	            echo "" . stream_get_contents($stream);
@@ -35,7 +34,7 @@ else
 	    }
 	    elseif($cmd == "stop" || $cmd == "stop")
     	{
-	        if(!($stream = ssh2_exec($con, "screen -S $name -p 0 -X stuff stop"))) die("Command couldn't be executed, something went wrong...\n");
+	        if(!($stream = ssh2_exec($con, "screen -S ".$name." -p 0 -X stuff stop"))) die("Command couldn't be executed, something went wrong...\n");
 	        else
 	        {
 	            echo "" . stream_get_contents($stream);
